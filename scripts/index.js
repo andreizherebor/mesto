@@ -9,7 +9,7 @@ const nameEditInput = popupEdit.querySelector('.popup__input_type_name');
 const textEditInput = popupEdit.querySelector('.popup__input_type_text');
 
 const popupAdd = document.querySelector('.popup_add');
-const popupAddForm = document.forms["profileAdd"];
+const popupAddForm = document.forms["placeAdd"];
 const titleAddInput = popupAdd.querySelector('.popup__input_type_title');
 const urlAddInput = popupAdd.querySelector('.popup__input_type_url');
 
@@ -20,14 +20,17 @@ const popupImage = document.querySelector('.popup_photos');
 const popupPhotosImage = document.querySelector('.popup__image');
 const popupImageCaption = popupImage.querySelector('.popup__figcaption');
 
-const closeButtons = document.querySelectorAll('.popup__close-button');
+const popups = Array.from(document.querySelectorAll('.popup'));
+
 
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupEscapeClick);
 }
 
 function closePopup(popupElement) {
   popupElement.classList.remove('popup_opened');
+  document.addEventListener('keydown', closePopupEscapeClick);
 }
 
 function openPopupEdit() {
@@ -66,6 +69,7 @@ function handleProfileCardSubmit(evt) {
   });
   cardsContainer.prepend(cardElement);
   popupAddForm.reset();
+ /*  toggleButtonState(inputList, buttonElement, classData.inactiveButtonClass); */
   closePopup(popupAdd);
 }
 
@@ -89,10 +93,25 @@ function handleRemoveButtonClick(evt) {
   evt.target.closest('.element').remove();
 }
 
-closeButtons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
-});
+
+function closePopupEscapeClick(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+}
+
+
+popups.forEach((element) => {
+  element.addEventListener('mousedown', function (evt) {
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(element);
+    }
+    if (evt.target.classList.contains('popup__close-button')) {
+      closePopup(element);
+    }
+  });
+})
 
 profileEditOpen.addEventListener('click', openPopupEdit);
 popupEditForm.addEventListener('submit',  handleProfileFormSubmit);
