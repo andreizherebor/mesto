@@ -22,6 +22,8 @@ const popupImageCaption = popupImage.querySelector('.popup__figcaption');
 
 const popups = Array.from(document.querySelectorAll('.popup'));
 
+const inputList = Array.from(popupAddForm.querySelectorAll(`.${classData.inputSelector}`));
+const buttonElement = popupAddForm.querySelector(`.${classData.submitButtonSelector}`);
 
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened');
