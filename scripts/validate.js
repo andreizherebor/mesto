@@ -1,5 +1,5 @@
 function enableValidation(classData) {
-  const formList = Array.from(document.forms);
+  const formList = document.querySelectorAll(`.${classData.formSelector}`);
   formList.forEach(function (formElement) {
     setEventListeners(formElement, classData);
   });
@@ -56,6 +56,7 @@ function hasInvalidInput(inputList) {
 }
 
 enableValidation({
+  formSelector: 'popup__form',
   inputSelector: 'popup__input',
   submitButtonSelector: 'popup__save-button',
   inactiveButtonClass: 'popup__save-button_disabled',

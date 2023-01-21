@@ -69,7 +69,7 @@ function handleProfileCardSubmit(evt) {
   });
   cardsContainer.prepend(cardElement);
   popupAddForm.reset();
- /*  toggleButtonState(inputList, buttonElement, classData.inactiveButtonClass); */
+  toggleButtonState(inputList, buttonElement, classData.inactiveButtonClass);
   closePopup(popupAdd);
 }
 
