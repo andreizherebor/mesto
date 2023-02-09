@@ -76,7 +76,7 @@ export function openPopupPhotos(imageLink, imageName) {
   popupPhotosImage.src = imageLink;
   popupPhotosImage.alt = imageName;
   popupImageCaption.textContent = imageName;
-  openPopup(popupPhotos);
+  openPopup(popupImage);
 }
 
 initialCards.forEach (card => {
