@@ -25,11 +25,24 @@ export const initialCards = [
   }
 ];
 
+
 export const classData = {
-  formSelector: 'popup__form',
   inputSelector: 'popup__input',
   submitButtonSelector: 'popup__save-button',
   inactiveButtonClass: 'popup__save-button_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  activeErrorClass: 'popup__error_visible',
 };
+
+export const profileElement = document.querySelector('.profile');
+export const profileNameSelector = '.profile__title';
+export const profileAboutSelector = '.profile__subtitle';
+export const profileEditButton = profileElement.querySelector('.profile__edit-button');
+export const addCardButton = profileElement.querySelector('.profile__add-button');
+
+export const popupProfileSelector = '.popup_edit';
+export const popupNewPlaceSelector = '.popup_add';
+export const popupPhotosSelector = '.popup_photos';
+
+export const cardsContainerSelector = '.elements__cards';
+export const cardSelector = '#card-template';
