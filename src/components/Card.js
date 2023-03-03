@@ -21,17 +21,18 @@ export default class Card {
     return document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
   }
 
-  _handleLikeButtonClick(evt) {
-    evt.target.classList.toggle('element__like-active-button');
+  _handleLikeButtonClick() {
+    this._cardsElementLike.classList.toggle('element__like-active-button');
   }
 
-  _handleRemoveButtonClick(evt) {
-    evt.target.closest('.element').remove();
+  _handleRemoveButtonClick() {
+    this._cardElement.remove()
   }
 
   generateCard() {
     this._cardElement = this._getTemplateElement();
     this._cardsElementImage = this._cardElement.querySelector('.element__image');
+    this._cardsElementLike = this._cardElement.querySelector('.element__like-button');
     this._setEventListeners();
 
     this._cardsElementImage.src = this._imageLink;

@@ -35,17 +35,16 @@ const popupPhotos = new PopupWithImage(popupPhotosSelector);
 popupPhotos.setEventListener();
 
 
-const cards = new Section({
+const cardsContainer = new Section({
   items: initialCards, renderer: (item) => {
     const cardElement = createNewCard(item, cardSelector);
-    cards.addItem(cardElement);
+    cardsContainer.addItem(cardElement);
   },
 }, cardsContainerSelector);
-cards.renderItems();
+cardsContainer.renderItems();
 
 
 const popupProfile = new PopupWithForm(popupProfileSelector, (evt) => {
-  evt.preventDefault();
   const formValues = popupProfile.getFormValues();
   userInfo.setUserInfo({ userName: formValues.title, userDescription: formValues.subtitle });
   popupProfile.close();
@@ -56,11 +55,10 @@ popupProfileValidator.enableValidation();
 
 
 const popupNewPlace = new PopupWithForm(popupNewPlaceSelector, (evt) => {
-  evt.preventDefault();
   const formValues = popupNewPlace.getFormValues();
   const item = { name: formValues.name, link: formValues.url };
   const cardElement = createNewCard(item, cardSelector);
-  cards.addNewItem(cardElement);
+  cardsContainer.addNewItem(cardElement);
   popupNewPlace.close();
 });
 popupNewPlace.setEventListener();
@@ -79,7 +77,6 @@ profileEditButton.addEventListener('click', () => {
 
 
 addCardButton.addEventListener('click', () => {
-  popupNewPlaceValidator.toggleButtonState();
   popupNewPlaceValidator.resetValidation();
   popupNewPlace.open();
 });
