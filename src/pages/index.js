@@ -45,8 +45,7 @@ cardsContainer.renderItems();
 
 
 const popupProfile = new PopupWithForm(popupProfileSelector, (evt) => {
-  const formValues = popupProfile.getFormValues();
-  userInfo.setUserInfo({ userName: formValues.title, userDescription: formValues.subtitle });
+  userInfo.setUserInfo({ userName: evt.title, userDescription: evt.subtitle });
   popupProfile.close();
 });
 popupProfile.setEventListener();
@@ -55,8 +54,7 @@ popupProfileValidator.enableValidation();
 
 
 const popupNewPlace = new PopupWithForm(popupNewPlaceSelector, (evt) => {
-  const formValues = popupNewPlace.getFormValues();
-  const item = { name: formValues.name, link: formValues.url };
+  const item = { name: evt.name, link: evt.url };
   const cardElement = createNewCard(item, cardSelector);
   cardsContainer.addNewItem(cardElement);
   popupNewPlace.close();
